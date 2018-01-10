@@ -73,7 +73,7 @@ def retrieve_stock_hist(stock):
         
     for k, v in (historicalStockSet.items()):
         print("Date: " + str(k) + " Close: " + str(v))
-    
+        
     return
 
 def lng_stock_analysis():
@@ -104,8 +104,10 @@ def lng_stock_analysis():
     lngPercentChange =[]
 
     for i in range(1, len(lngStockDict)):
-        stockPerTot += stockPercentChange[i - 1] = (lngStockDict[dates[i]][0] - stockPrev)/(stockPrev*100)
-        lngPerTot += lngPercentChange[i - 1] = (lngStockDict[dates[i]][1] - lngPrev)/(lngPrev*100)
+        stockPercentChange[i - 1] = (lngStockDict[dates[i]][0] - stockPrev)/(stockPrev*100)
+        stockPerTot += stockPercentChange[i - 1]
+        lngPercentChange[i - 1] = (lngStockDict[dates[i]][1] - lngPrev)/(lngPrev*100)
+        lngPerTot += lngPercentChange[i - 1]
         stockPrev = lngStockDict[dates[i]][0]
         lngPrev = lngStockDict[dates[i]][1]
     
@@ -121,12 +123,11 @@ def lng_stock_analysis():
         lngVarTot += (lngPercentChange[i - 1] - lngPerAve)**2
         covTot += (stockPercentChange[i - 1] - stockPerAve)*(lngPercentChange[i - 1] - lngPerAve)
 
-
     stockVar = stockVarTot/(len(lngStockDict))
     lngVar = lngVarTot/(len(lngStockDict))
     covar = covTot/(len(lngStockDict) - 1)
-    corr = covar/(sqrt(stockVar)*sqrt(lngVar))
+    corr = covar/(sqrt(stockVar)*(math.sqrt(lngVar)))
     beta = covar/lngVar
 
-    print("Stock-LNG Beta: " + beta + " Correlation: " + corr)
+    print("Stock-LNG Beta: " + str(beta) + " Correlation: " + str(corr))
     return
