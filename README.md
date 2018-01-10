@@ -1,7 +1,7 @@
 # awstest
 Short Test of AWS DynamoDB Tables with Python.
 
-Requires 'dbTableCreator.py' to be run intially, creating an instance of a DynamoDB table which historical LNG Prices will 
+Requires 'dbTableCreator.py' to be run intially providing a DynamoDB table is active through command line prompt prior, creating an instance of a DynamoDB table which historical LNG Prices will 
 be added to. 'lngPriceRetrival' populates this table using data from .xls spreadsheet, owned by US Energy Information
 Administration. 'analysis'.py has two functions, the first necessary to run, to determine which stock is being compared is 
 'retrieve_stock_hist', which takes a string and returns nothing. Stocks must be entered in all capitals and Australian stocks
