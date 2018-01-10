@@ -13,3 +13,9 @@ values of the stock w.r.t. historical LNG prices. 'lng_stock_analysis' takes no 
 Code concerning the creation and querying of the AWS DynamoDB table was produced using aid from AWS "10 Minute Tutorials" 
 available at https://aws.amazon.com/getting-started/tutorials/. 
 
+Dependencies required:
+  xlrd,
+  AWS Python SDK (boto3),
+  bs4 (BeautifulSoup),
+  Requests
+  
